@@ -8,9 +8,7 @@
   <h1>Mensajes</h1>
   <ul id="list"></ul>
   <script>
-    // El navegador corre en tu máquina, no en la red de Compose.
-    // Por eso esta URL usa localhost y el puerto publicado de la API.
-    fetch("https://bookish-memory-jq475w4xpx62pp5g-8000.app.github.dev/messages")
+    fetch("/messages")
       .then((res) => res.json())
       .then((messages) => {
         const list = document.getElementById("list");

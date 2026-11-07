@@ -3,8 +3,10 @@ services:
     build: ./frontend
     ports:
       - "80:80"
-   
+    depends_on:
+      - api
+    restart: unless-stopped
+
   api:
     build: ./backend
-    ports:
-      - "8000:8000"
+    restart: unless-stopped
