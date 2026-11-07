@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mensajes</title>
+</head>
+<body>
+  <h1>Mensajes</h1>
+  <ul id="list"></ul>
+  <script>
+    // El navegador corre en tu máquina, no en la red de Compose.
+    // Por eso esta URL usa localhost y el puerto publicado de la API.
+    fetch("https://bookish-memory-jq475w4xpx62pp5g-8000.app.github.dev/messages")
+      .then((res) => res.json())
+      .then((messages) => {
+        const list = document.getElementById("list");
+        messages.forEach((msg) => {
+          const item = document.createElement("li");
+          item.textContent = msg.text;
+          list.appendChild(item);
+        });
+      })
+      .catch(() => {
+        document.getElementById("list").textContent =
+          "No pude hablar con la API";
+      });
+  </script>
+</body>
+</html>
